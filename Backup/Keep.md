@@ -421,9 +421,9 @@ A主动打开本地一个端口，向B发送一个SYN标志位为1，seq=x的包
 A(主动建立连接的一方)主动断开TCP连接。A发送一个FIN标志位置为1，seq=u的数据包，并进入FIN-wait状态，此时仍可以接收B尚未传输结束的数据。B接受到之后发送FIN，ACK，标志知道连接即将释放，并进入CLOSE-wait状态，A接受到B的FIN，向B发送一个ACK，确认连接断开，A在等待极短的时间后断开连接。B接受到ACK之后断开连接。
 ```
 
-![tcp三次握手-1.jpg](./tcp三次握手-1.jpg)
+![tcp三次握手-1.jpg](./src/tcp三次握手-1.jpg)
 
-![tcp三次握手-2.jpg](./tcp三次握手-2.jpg)
+![tcp三次握手-2.jpg](./src/tcp三次握手-2.jpg)
 
 ### 2月2日
 
@@ -435,9 +435,9 @@ wireshark官网提供了这样一个现在工具WPA-PSK生成：https://www.wire
 我们可以在wireshark的 编辑 - 首选项 - Protocol(协议) - IEEE802.11 - Decryption Keys导入它：
 ```
 
-![wireshark-wifi-1.jpg](./wireshark-wifi-1.jpg)
+![wireshark-wifi-1.jpg](./src/wireshark-wifi-1.jpg)
 
-![wireshark-wifi-2.jpg](./wireshark-wifi-2.jpg)
+![wireshark-wifi-2.jpg](./src/wireshark-wifi-2.jpg)
 
 ### 2月1日
 
@@ -469,9 +469,9 @@ Firefox 和 Chrome 都支持NSS Key Log。要想启用NSS LOG，必须要配置�
 但如果主办方给了RSA的key文件，也可以直接导入；
 ```
 
-![wireshark-ssl-1.jpg](./wireshark-ssl-1.jpg)
+![wireshark-ssl-1.jpg](./src/wireshark-ssl-1.jpg)
 
-![wireshark-ssl-2.jpg](./wireshark-ssl-2.jpg)
+![wireshark-ssl-2.jpg](./src/wireshark-ssl-2.jpg)
 
 ### 1月26日
 
@@ -909,11 +909,11 @@ base64，意思是使用64个可见字符来表示一个二进制数组，编码
 hex编码不区分大小写，但是base32与base64是区分的。
 ```
 
-![base64.png](./base64.png)
+![base64.png](./src/base64.png)
 
-![base32.jpg](./base32.jpg)
+![base32.jpg](./src/base32.jpg)
 
-![base16.png](./base16.png)
+![base16.png](./src/base16.png)
 
 ### 1月1日
 
@@ -1647,7 +1647,7 @@ ubuntu@VM-72-70-ubuntu:/var/www/wiki/dangdangip$ cat `find . -name '*txt'`
 
 Linux文件与目录的权限区别
 
-[Linux文件与目录的权限区别.png](./Linux文件与目录的权限区别.png)
+[Linux文件与目录的权限区别.png](./src/Linux文件与目录的权限区别.png)
 
 ### 2017年6月24日
 
@@ -2406,7 +2406,7 @@ certutil -decode Encode.txt Decode.txt
 ::Base64_Decode
 ```
 
-![certutil.png](./certutil.png)
+![certutil.png](./src/certutil.png)
 
 ### 2017年4月24日
 
