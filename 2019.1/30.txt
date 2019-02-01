@@ -1,0 +1,11 @@
+- pip 生成 requests.txt
+
+  ```
+  pip freeze
+  ```
+
+- python dic和json一样吗？
+
+  ```
+  Python 的字典是一种数据结构，JSON 是一种数据格式，是纯文本的。
+  ```
